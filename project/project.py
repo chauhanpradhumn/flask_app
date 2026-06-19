@@ -24,7 +24,7 @@ class user(db.Model):
 class habit(db.Model):
    id=db.Column(db.Integer(),primary_key=True)
    name=db.Column(db.String(),nullable=False)
-   description=db.Column(db.String(length=30),)
+   description=db.Column(db.Text)
    created_at=db.Column(db.Date , nullable=False)
    user_id=db.Column(db.Integer,  db.ForeignKey('user.id'), nullable=False)
    habits_data=db.relationship('habitlog')
@@ -152,7 +152,7 @@ def complete_habit(habit_id):
    for log in logs:
       if log.date==crr_date:
          exits=True
-   if exits==True:
+   if exits==False:
       new_log=habitlog(habit_id=habit_id, date=crr_date)
       db.session.add(new_log)
       db.session.commit()
