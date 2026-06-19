@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit_habit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {% for field in form %}
+            {% if field.name !="csrf_token" %}
+                {{field.label}}
+                <br>
+                {%for error in field.errors %}
+                        <span style="color:red;">
+                            {{error}}
+                        </span>
+                {% endfor %}
+                {{field}}
+                <br><br>
+            {% endif %}
+        {% endfor %}
+    </form>
+</body>
+</html>
