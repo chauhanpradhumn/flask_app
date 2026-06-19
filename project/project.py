@@ -51,7 +51,7 @@ class login_form(FlaskForm):
 
 class createhabit_form(FlaskForm):
    name=StringField(label='habit name :', validators=[DataRequired(), Length(min=5,max=15)])
-   description=StringField(label='describe your habit :', validators=[Length(min=5,max=50)])
+   description=StringField(label='describe your habit :', validators=[Length(min=5,max=500)])
    submit=SubmitField(label='create habit :')
 
 #--------------routes------------
